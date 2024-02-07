@@ -1,15 +1,16 @@
-import React, { useContext } from "react";
-import { balanceContext } from "../../context/BalanceProvider";
+import React from "react";
+
 import { NavBar } from "../NavBar/NavBar";
+
+import { Balance } from "../Balance";
 
 import "./Header.css";
 
 export const Header = () => {
-  const { balance } = useContext(balanceContext);
-
   return (
     <div className="header">
       <NavBar />
+      <Balance />
     </div>
   );
 };
