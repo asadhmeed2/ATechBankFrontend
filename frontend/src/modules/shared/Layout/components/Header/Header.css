@@ -1,0 +1,10 @@
+.header{
+    display: flex;
+    border-bottom: 1px gray solid;
+}
+
+@media (max-width: 768px) {
+    .header{
+        justify-content: center;
+    }
+}

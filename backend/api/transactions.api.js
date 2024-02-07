@@ -6,8 +6,8 @@ const TransactionController = require("../controllers/transactionController");
 
 router.post("/", async function (req, res) {
   try {
-    const task = await TransactionController.addTransaction(req.body);
-    res.send(task);
+    const transaction = await TransactionController.addTransaction(req.body);
+    res.send(transaction);
   } catch (err) {
     res.status(301).send({ message: err.message });
   }
@@ -28,6 +28,16 @@ router.get("/byCategory/sum", async function (req, res) {
       await TransactionController.getSumOfTransactionsByCategory();
 
     res.send(transactionsByCategory);
+  } catch (err) {
+    res.status(404).send({ message: err.message });
+  }
+});
+
+router.get("/balance", async function (req, res) {
+  try {
+    const balance = await TransactionController.getBalance();
+
+    res.send({ balance });
   } catch (err) {
     res.status(404).send({ message: err.message });
   }

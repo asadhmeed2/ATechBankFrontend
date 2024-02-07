@@ -1,0 +1,13 @@
+.nav-ul{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+   
+    padding: 5px;
+}
+
+.nav-link{
+    text-decoration: none;
+    color: blue;
+}

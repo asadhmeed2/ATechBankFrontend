@@ -37,6 +37,21 @@ class TransactionController {
 
     return transaction;
   }
+
+  async getBalance() {
+    const transaction = await Transaction.aggregate([
+      {
+        $group: {
+          _id: null,
+          count: {
+            $sum: "$amount",
+          },
+        },
+      },
+    ]);
+
+    return transaction;
+  }
 }
 
 module.exports = new TransactionController();
