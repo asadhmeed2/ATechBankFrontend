@@ -1,0 +1,19 @@
+.breakdown-list{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+    max-width: 500px;
+    flex: 1;
+
+    gap: 10px;
+
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.77);
+    -webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.77);
+    -moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.77);
+}
+
+.breakdown-list-title{
+    font-size:24;
+    font-weight: bold;
+}

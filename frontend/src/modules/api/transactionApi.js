@@ -50,6 +50,18 @@ class TransactionApi {
       console.error(err);
     }
   }
+
+  async getBreakdownData() {
+    try {
+      const balance = await axios.get(
+        `${process.env.REACT_APP_API_URL}/${TRANSACTION_ENDPOINT}/byCategory/sum`
+      );
+
+      return balance.data;
+    } catch (err) {
+      console.error(err);
+    }
+  }
 }
 
 export const transactionApi = new TransactionApi();

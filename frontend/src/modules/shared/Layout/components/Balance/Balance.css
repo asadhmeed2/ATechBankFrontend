@@ -1,5 +1,9 @@
 .balance{
+ padding-right: 10px;
+}
 
+.bold{
+    font-weight: bold;
 }
 
 .balance-green{

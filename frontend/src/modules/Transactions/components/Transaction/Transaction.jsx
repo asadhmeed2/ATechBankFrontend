@@ -20,14 +20,20 @@ export const Transaction = ({ transaction, onDelete }) => {
 
   return (
     <div className="transaction-card">
-      <div className="left">
+      <div className="left trans-section">
         <div className="trans-vendor">{vendor}</div>
+
         <div className="trans-category">{category}</div>
       </div>
 
-      <div className="right">
+      <div className="right trans-section">
         <div className="trans-amount">{amount}</div>
-        <button onClick={handleDelete}>Delete</button>
+
+        <div className="">
+          <button className="trans-btn" onClick={handleDelete}>
+            Delete
+          </button>
+        </div>
       </div>
     </div>
   );

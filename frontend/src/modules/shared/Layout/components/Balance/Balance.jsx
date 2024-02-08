@@ -24,8 +24,10 @@ export const Balance = () => {
     <div className="balance">
       {!isLoading && (
         <>
-          <span>Balance : </span>
-          <span className={balance >= 0 ? "balance-green" : "balance-red"}>
+          <span className="bold balance-title">BALANCE : </span>
+          <span
+            className={balance >= 0 ? "balance-green bold" : "balance-red bold"}
+          >
             {balance}
           </span>
         </>
