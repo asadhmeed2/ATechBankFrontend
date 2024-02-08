@@ -11,11 +11,23 @@ export const Transactions = () => {
   const getTransactions = useCallback(async () => {
     const transactions = await transactionApi.getTransactions();
 
-    setTransactions(transactions);
+    setTransactions(transactions.reverse());
     return transactions;
   }, []);
 
   const { isLoading } = useSWR("api/transactions", getTransactions);
+
+  const onDelete = (transaction) => {
+    const transactionsClone = [...transactions];
+
+    const idx = transactionsClone.findIndex(
+      (trans) => transaction._id === trans._id
+    );
+
+    transactionsClone.splice(idx, 1);
+
+    setTransactions(transactionsClone);
+  };
 
   if (isLoading) {
     return "loading..";
@@ -24,7 +36,11 @@ export const Transactions = () => {
   return (
     <div className="transactions">
       {transactions.map((transaction) => (
-        <Transaction key={transaction._id} transaction={transaction} />
+        <Transaction
+          key={transaction._id}
+          transaction={transaction}
+          onDelete={onDelete}
+        />
       ))}
     </div>
   );

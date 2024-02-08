@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "./Transaction.css";
+import { balanceContext } from "../../../shared/Layout/context/BalanceProvider";
+import { transactionApi } from "../../../api/transactionApi";
 
-export const Transaction = ({ transaction }) => {
+export const Transaction = ({ transaction, onDelete }) => {
   const { amount, category, vendor } = transaction;
 
-  const handleDelete = () => {};
+  const { addToBalance } = useContext(balanceContext);
+
+  const handleDelete = async () => {
+    const result = await transactionApi.deleteTransaction(transaction._id);
+
+    if (result === true) {
+      addToBalance(-transaction.amount);
+      onDelete(transaction);
+    }
+  };
 
   return (
     <div className="transaction-card">
