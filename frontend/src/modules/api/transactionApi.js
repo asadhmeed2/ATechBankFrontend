@@ -25,6 +25,19 @@ class TransactionApi {
       console.error(err);
     }
   }
+
+  async addTransaction(createdTransaction) {
+    try {
+      const balance = await axios.post(
+        `${process.env.REACT_APP_API_URL}/${TRANSACTION_ENDPOINT}`,
+        createdTransaction
+      );
+
+      return balance.data;
+    } catch (err) {
+      console.error(err);
+    }
+  }
 }
 
 export const transactionApi = new TransactionApi();
