@@ -9,3 +9,5 @@ export const navLinks = {
   [navLinkNames.Operations]: "/operations",
   [navLinkNames.Breakdown]: "/breakdown",
 };
+
+export const TRANSACTION_ENDPOINT = "api/transactions";
