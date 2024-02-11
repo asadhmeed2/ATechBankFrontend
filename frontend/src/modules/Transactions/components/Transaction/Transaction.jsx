@@ -27,7 +27,11 @@ export const Transaction = ({ transaction, onDelete }) => {
       </div>
 
       <div className="right trans-section">
-        <div className="trans-amount">{amount}</div>
+        <div
+          className={amount >= 0 ? "trans-amount-green" : "trans-amount-red"}
+        >
+          {amount}
+        </div>
 
         <div className="">
           <button className="trans-btn" onClick={handleDelete}>

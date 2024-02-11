@@ -17,11 +17,6 @@ function App() {
         <Layout>
           <Routes>
             <Route
-              path={navLinks[navLinkNames.Transactions]}
-              element={<Landing />}
-            />
-
-            <Route
               path={navLinks[navLinkNames.Operations]}
               element={<Operations />}
             />
@@ -31,7 +26,11 @@ function App() {
               element={<Breakdown />}
             />
 
-            <Route path="/" element={<Landing />} />
+            <Route
+              path={navLinks[navLinkNames.Transactions]}
+              element={<Landing />}
+              exact
+            />
           </Routes>
         </Layout>
       </Router>

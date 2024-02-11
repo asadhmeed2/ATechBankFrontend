@@ -3,6 +3,8 @@ import { transactionApi } from "../../../api/transactionApi";
 import { balanceContext } from "../../../shared/Layout/context/BalanceProvider";
 
 import "./OperationsCard.css";
+import { redirect, useNavigate } from "react-router-dom";
+import { navLinkNames, navLinks } from "../../../../consts";
 
 const BUTTONS = {
   Deposit: "deposit-btn",
@@ -15,6 +17,8 @@ export const OperationsCard = () => {
   const [formError, setFormError] = useState("");
 
   const [formSuccess, setFormSuccess] = useState("");
+
+  const navigate = useNavigate();
 
   const onChange = (e) => {
     setFormValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -42,6 +46,7 @@ export const OperationsCard = () => {
 
           setTimeout(() => {
             setFormSuccess("");
+            navigate(navLinks[navLinkNames.Transactions]);
           }, 2000);
         } else {
           setFormError("Error please try again ");
@@ -52,7 +57,7 @@ export const OperationsCard = () => {
         }
       }
     },
-    [addToBalance, formValues]
+    [addToBalance, formValues, navigate]
   );
 
   return (

@@ -8,6 +8,8 @@ import { transactionApi } from "../../../../api/transactionApi";
 
 import "./Balance.css";
 
+const DANGER_BALANCE = 500;
+
 export const Balance = () => {
   const { balance, updateBalance } = useContext(balanceContext);
 
@@ -26,7 +28,11 @@ export const Balance = () => {
         <>
           <span className="bold balance-title">BALANCE : </span>
           <span
-            className={balance >= 0 ? "balance-green bold" : "balance-red bold"}
+            className={
+              balance >= DANGER_BALANCE
+                ? "balance-green bold"
+                : "balance-red bold"
+            }
           >
             {balance}
           </span>
