@@ -7,7 +7,7 @@ import { transactionApi } from "../../../api/transactionApi";
 export const Transaction = ({ transaction, onDelete }) => {
   const { amount, category, vendor } = transaction;
 
-  const { addToBalance } = useContext(balanceContext);
+  const { addToBalance, currencyExchange } = useContext(balanceContext);
 
   const handleDelete = async () => {
     const result = await transactionApi.deleteTransaction(transaction._id);
@@ -30,7 +30,7 @@ export const Transaction = ({ transaction, onDelete }) => {
         <div
           className={amount >= 0 ? "trans-amount-green" : "trans-amount-red"}
         >
-          {amount}
+          {+amount / currencyExchange}
         </div>
 
         <div className="">

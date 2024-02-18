@@ -14,6 +14,18 @@ class TransactionApi {
     }
   }
 
+  async getCurrencyExchange(currency) {
+    try {
+      const currencyExchange = await axios.get(
+        `${process.env.REACT_APP_API_URL}/${TRANSACTION_ENDPOINT}/currency/${currency}`
+      );
+
+      return currencyExchange.data.result;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   async getTransactions() {
     try {
       const balance = await axios.get(

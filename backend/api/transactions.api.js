@@ -33,6 +33,16 @@ router.get("/byCategory/sum", async function (req, res) {
   }
 });
 
+router.get("/currency/:currency", async function (req, res) {
+  const { currency } = req.params;
+
+  if (currency === "il") {
+    return res.send({ result: 3.7 });
+  } else {
+    return res.send({ result: 1 });
+  }
+});
+
 router.get("/balance", async function (req, res) {
   try {
     const balance = await TransactionController.getBalance();
